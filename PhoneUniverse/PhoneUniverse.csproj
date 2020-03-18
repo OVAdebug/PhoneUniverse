@@ -43,19 +43,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CBattery.cs" />
-    <Compile Include="CDynamic.cs" />
-    <Compile Include="CKeyboard.cs" />
-    <Compile Include="CMicrophone.cs" />
+    <Compile Include="Hardware\IO\Keyboards\CBasicKeyboard.cs" />
+    <Compile Include="Hardware\CBattery.cs" />
+    <Compile Include="Hardware\IO\Screens\CColorfulScreen.cs" />
+    <Compile Include="Hardware\Peripheral\CSpeaker.cs" />
+    <Compile Include="Hardware\IO\Keyboards\CPushButtKeyboard.cs" />
+    <Compile Include="Hardware\Peripheral\CMicrophone.cs" />
     <Compile Include="CCellPhone.cs" />
-    <Compile Include="CScreen.cs" />
-    <Compile Include="CSimCard.cs" />
+    <Compile Include="Hardware\IO\Screens\CMonochromeScreen.cs" />
+    <Compile Include="Hardware\IO\Screens\CRetinaScreen.cs" />
+    <Compile Include="Hardware\IO\Screens\COLEDScreen.cs" />
+    <Compile Include="Hardware\IO\Screens\CScreenBase.cs" />
+    <Compile Include="Hardware\IO\Keyboards\CSensoredKeyboard.cs" />
+    <Compile Include="Hardware\CSimCard.cs" />
+    <Compile Include="CSimCorpMobile.cs" />
+    <Compile Include="Hardware\CSimpleSimCard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

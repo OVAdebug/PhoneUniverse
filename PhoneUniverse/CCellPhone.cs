@@ -3,29 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PhoneUniverse.Hardware;
+using PhoneUniverse.Hardware.IO;
+using PhoneUniverse.Hardware.IO.Keyboards;
+using PhoneUniverse.Hardware.IO.Screens;
+using PhoneUniverse.Hardware.Peripheral;
 
-namespace PhoneUniverse
-{
+namespace PhoneUniverse{
     public abstract class CCellPhone
     {
 
         public CCellPhone()
         {
-            this.dynamic = new CDynamic();
+            this.dynamic = new CSpeaker();
             this.mic = new CMicrophone();
             this.battery = new CBattery();
-        
+            SimCards = new List<CSimCard>();
+            SimCards.Add(new CSimCard());
         }
 
-        public string GetDescription()
+        public override string ToString()
         {
-        var descriptionBuilder = new StringBuilder();
-        descriptionBuilder.AppendLine($"Screen Type: {screen.ToString()}.");
-        descriptionBuilder.AppendLine($"Keyboard Type: {keyb.ToString()}.");
-        descriptionBuilder.AppendLine($"Simcard number: {simCard.ToString()}.");
-        descriptionBuilder.AppendLine($"Speakers: {dynamic.ToString()}.");
+            var descriptionBuilder = new StringBuilder();
+            descriptionBuilder.AppendLine($"Screen Type: {screen.ToString()}.");
+            descriptionBuilder.AppendLine($"Keyboard Type: {keyb.ToString()}.");
+            descriptionBuilder.AppendLine($"Simcard info: {simCard.ToString()}.");
+            descriptionBuilder.AppendLine($"Speakers: {dynamic.ToString()}.");
             descriptionBuilder.AppendLine($"Microphone: {mic.ToString()}.");
             descriptionBuilder.AppendLine($"Battery: {battery.ToString()}.");
+            descriptionBuilder.AppendLine($"Number of cards supported: {cardlots.ToString()}.");
             return descriptionBuilder.ToString();
         }
 
@@ -33,22 +39,9 @@ namespace PhoneUniverse
         public abstract CBasicKeyboard keyb { get; }
         public abstract CSimpleSimCard simCard { get; }
         private CBattery battery;
-        
-        private CDynamic dynamic;
+        private CSpeaker dynamic;
         private CMicrophone mic;
+        public int cardlots { get { return SimCards.Count; } }
+        private List<CSimCard> SimCards; 
     }
-    public class CSimCorpMobile : CCellPhone
-    {
-        
-        public override CScreenBase screen { get { return vOLEDScreen; } }
-        private readonly COLEDScreen vOLEDScreen = new COLEDScreen(300,400);
-
-        public override CBasicKeyboard keyb {get {return vkeyb;}}
-        private readonly  CSensoredKeyboard  vkeyb= new CSensoredKeyboard();
-
-        public override CSimpleSimCard simCard { get { return vcards; } }
-        private readonly CSimCard vcards = new CSimCard(2);
-    }
-
-
 }
