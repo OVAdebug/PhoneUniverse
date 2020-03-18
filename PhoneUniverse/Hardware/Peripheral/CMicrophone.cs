@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PhoneUniverse
-{    
+namespace PhoneUniverse.Hardware.Peripheral{    
     class CMicrophone
     {        
-        private double lowFreq;
-        private double uperFreq;
+        private double LowFreq;
+        private double UperFreq;
         private double bitrate;
+
         public override string ToString()
         {
-            return string.Format("equipment exists");
+            return string.Format("Mic. equipment exists");
         }
     }
 }
